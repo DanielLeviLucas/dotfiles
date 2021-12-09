@@ -12,11 +12,11 @@ unsetopt extendedglob
 setopt histignorealldups
 setopt histignorespace
 
-zstyle :compinstall filename '~/.zshrc'
-zstyle ':completion:*' menu select
 
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
+
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' menu select
 
 ### EXPORT
 export TERM="xterm-256color"                      # getting proper colors
@@ -218,4 +218,3 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ### SETTING THE STARSHIP PROMPT ###
 eval "$(starship init zsh)"
-
