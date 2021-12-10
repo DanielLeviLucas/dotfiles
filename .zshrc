@@ -7,8 +7,8 @@ HISTFILE=~/.zhistory
 # Number of lines of history to save to $HISTFILE.
 SAVEHIST=1000
 # setopt
-unsetopt autocd
-unsetopt extendedglob
+setopt autocd
+setopt extendedglob
 setopt histignorealldups
 setopt histignorespace
 
