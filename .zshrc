@@ -133,10 +133,10 @@ up () {
 }
 
 # config alias
-alias confvim='vim ~/.vimrc'
-alias confzsh='vim ~/.zshrc'                                # open .zshrc in vim
-alias confalacritty='vim ~/.config/alacritty/alacritty.yml'
-alias confstarship='vim ~/.config/starship.toml'
+alias confvim='nvim ~/.config/nvim/init.vim'
+alias confzsh='nvim ~/.zshrc'                                # open .zshrc in vim
+alias confalacritty='nvim ~/.config/alacritty/alacritty.yml'
+alias confstarship='nvim ~/.config/starship.toml'
 
 # vim and emacs
 alias vim="nvim"
