@@ -8,9 +8,8 @@ filetype off                  " required
 call plug#begin('~/.vim/plugged')
 
 "{{ The Basics }}
-    Plug 'gmarik/Vundle.vim'                           " Vundle
     Plug 'itchyny/lightline.vim'                       " Lightline statusbar
-    Plug 'suan/vim-instant-markdown', {'rtp': 'after'} " Markdown Preview
+    Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
     Plug 'frazrepo/vim-rainbow'
 "{{ File management }}
     Plug 'vifm/vifm.vim'                               " Vifm
@@ -18,7 +17,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'     " Highlighting Nerdtree
     Plug 'ryanoasis/vim-devicons'                      " Icons for Nerdtree
 "{{ Productivity }}
-    Plug 'vimwiki/vimwiki'                             " VimWiki
+    Plug 'vimwiki/vimwiki'
     Plug 'jreybert/vimagit'                            " Magit-like plugin for vim
 "{{ Tim Pope Plugins }}
     Plug 'tpope/vim-surround'                          " Change surrounding marks
@@ -62,7 +61,6 @@ set clipboard=unnamedplus       " Copy/paste between vim and other programs.
 set ignorecase                  " ignorecase while serching
 set smartcase                   " Switches to case searching when useing Uppercase
 set scrolloff=16
-set signcolumn=yes
 set nohlsearch                  " Removes highlight after search
 set wildmode=longest,list,full  " Autocompletion
 
