@@ -1,0 +1,8 @@
+#!/usr/bin/env bash 
+picom &
+conky -c $HOME/.config/conky/qtile/dracula_theme.conkyrc &
+dunst &
+nitrogen --restore &
+copyq &
+setxkbmap us dvorak &
+xinput set-prop 13 "libinput Accel Speed" -0.9 &

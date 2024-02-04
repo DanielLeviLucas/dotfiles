@@ -1,0 +1,11 @@
+#!/bin/bash
+
+playerctl --player=spotify play-pause
+player_status=$(playerctl --player=spotify status)
+
+if [[ "$player_status" == "Playing" ]]; then
+    dunstify "Music Player" -u low -i circle-play-regular -t 3400 "Paused"
+elif [[ "$player_status" == "Paused" ]]; then
+    dunstify "Music Player" -u low -i circle-play-regular -t 3400 "Playing"
+fi
+
