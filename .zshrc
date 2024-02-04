@@ -59,10 +59,6 @@ if [ -d "/var/lib/flatpak/exports/bin/" ] ;
   then PATH="/var/lib/flatpak/exports/bin/:$PATH"
 fi
 
-if [ -f "$HOME/.tp_aliases" ]; then
-    . $HOME/.tp_aliases
-fi
-
 if [ -f "$HOME/.bash_profile" ]; then
     . $HOME/.bash_profile
 fi
