@@ -63,6 +63,10 @@ if [ -f "$HOME/.bash_profile" ]; then
     . $HOME/.bash_profile
 fi
 
+if [ -f "$HOME/.profile" ]; then
+    . $HOME/.profile
+fi
+
 ### SETTING OTHER ENVIRONMENT VARIABLES
 if [ -z "$XDG_CONFIG_HOME" ] ; then
     export XDG_CONFIG_HOME="$HOME/.config"
@@ -197,7 +201,6 @@ alias ff="tmux-sessionizer"
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
