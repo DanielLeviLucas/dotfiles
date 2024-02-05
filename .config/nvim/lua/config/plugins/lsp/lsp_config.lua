@@ -134,7 +134,7 @@ return {
         lspconfig["pyright"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
-            filetypes = {"python"},
+            filetypes = { "python" },
         })
 
         -- configure lua server (with special settings)
@@ -158,6 +158,9 @@ return {
             },
         })
 
-        lspconfig["gopls"].setup({})
+        lspconfig["gopls"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
     end,
 }
