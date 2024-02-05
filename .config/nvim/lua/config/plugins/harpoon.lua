@@ -29,7 +29,7 @@ return {
                 function() toggle_telescope(harpoon:list()) end,
                 { desc = "Open hapoon list in telescope" }
             )
-            vim.keymap.set("n", "<C-H>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+            vim.keymap.set("n", "<leader>hw", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
             vim.keymap.set("n", "<leader>a", function() harpoon:list():append() end)
             vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
             vim.keymap.set("n", "<C-t>", function() harpoon:list():select(2) end)
