@@ -201,8 +201,5 @@ alias ff="tmux-sessionizer"
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
 ### SETTING THE STARSHIP PROMPT ###
 eval "$(starship init zsh)"
