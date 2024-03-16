@@ -201,5 +201,8 @@ alias ff="tmux-sessionizer"
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+### Setting up shell integration for fzf
+eval "$(fzf --zsh)"
+
 ### SETTING THE STARSHIP PROMPT ###
 eval "$(starship init zsh)"
