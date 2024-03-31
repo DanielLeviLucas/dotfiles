@@ -75,7 +75,7 @@ return {
                     local word = vim.fn.expand("<cword>")
                     builtin.grep_string({ search = word })
                 end,
-                { desc = "Search current hightlight word"}
+                { desc = "Search current hightlight word" }
             )
             vim.keymap.set(
                 "n", "<leader>pWs",
@@ -83,7 +83,7 @@ return {
                     local word = vim.fn.expand("<cWORD>")
                     builtin.grep_string({ search = word })
                 end,
-                { desc = "Search current hightlight whole word"}
+                { desc = "Search current hightlight whole word" }
             )
         end,
         keys = function()
