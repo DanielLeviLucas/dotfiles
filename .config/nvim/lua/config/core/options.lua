@@ -14,6 +14,9 @@ vim.g.netrw_winsize = 20
 
 local opt = vim.opt
 
+-- disable mouse
+opt.mouse = ""
+
 -- tabs & indentation
 opt.tabstop = 4 -- 4 spaces for tabs (prettier default)
 opt.shiftwidth = 4
