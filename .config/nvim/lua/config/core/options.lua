@@ -12,6 +12,8 @@ vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
 vim.g.netrw_winsize = 20
 
+vim.g.have_nerd_font = true
+
 local opt = vim.opt
 
 -- disable mouse
@@ -49,7 +51,6 @@ opt.splitbelow = true -- split horizontal window to the bottom
 opt.swapfile = false
 
 opt.backup = false
-opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 opt.undofile = true
 
 opt.signcolumn = "yes"
@@ -59,9 +60,9 @@ opt.colorcolumn = "80"
 
 -- Ignore compiled files
 opt.wildignore = "__pycache__"
-opt.wildignore:append { "*.o", "*~", "*.pyc", "*pycache*" }
+opt.wildignore:append({ "*.o", "*~", "*.pyc", "*pycache*" })
 
- opt.pumblend = 0
+opt.pumblend = 0
 -- opt.wildmode = "longest:full"
 opt.wildoptions = "pum"
 
@@ -108,6 +109,15 @@ opt.formatoptions = opt.formatoptions
   - "2" -- I'm not in gradeschool anymore
 
 opt.joinspaces = false
+
+-- Sets how neovim will display certain whitespace characters in the editor.
+--  See `:help 'list'`
+--  and `:help 'listchars'`
+opt.list = true
+opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+
+-- Preview substitutions live, as you type!
+opt.inccommand = "split"
 
 opt.fillchars = { eob = "3" }
 
