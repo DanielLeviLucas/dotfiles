@@ -8,6 +8,12 @@ return {
             "antosha417/nvim-lsp-file-operations",
             config = true
         },
+        -- Useful status updates for LSP.
+        -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+        { "j-hui/fidget.nvim", opts = {} },
+        -- 'neodev` configures Lua LSP for your Neovim config, runtime and plugins
+        -- used for completion, annotations and signatures of Neovim apis
+        { "folke/neodev.nvim", opts = {} },
     },
     config = function()
         -- import lspconfig plugin
@@ -27,19 +33,28 @@ return {
 
             -- set keybinds
             opts.desc = "Show LSP references"
-            keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
-
-            opts.desc = "Go to declaration"
+            local builtin = require("telescope.builtin")
+            -- WARN: This is not Goto Definition, this is Goto Declaration.
+            -- For example, in C this would take you to the header.
+            opts.desc = "[G]oto [D]eclaration"
             keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 
-            opts.desc = "Show LSP definitions"
-            keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+            opts.desc = "[G]oto [D]efinition"
+            keymap.set("n", "gd", builtin.lsp_definitions, opts)
 
-            opts.desc = "Show LSP implementations"
-            keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
+            opts.desc = "[G]oto [R]eferences"
+            keymap.set("n", "gr", builtin.lsp_references, opts)
 
-            opts.desc = "Show LSP type definitions"
-            keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
+            opts.desc = "[G]oto [I]mplementation"
+            keymap.set("n", "gi", builtin.lsp_implementations, opts)
+
+            opts.desc = "Type [D]efinition"
+            keymap.set("n", "gt", builtin.lsp_type_definitions, opts)
+
+            -- Fuzzy find all the symbols in your current document.
+            --  Symbols are things like variables, functions, types, etc.
+            opts.desc = "[D]ocument [S]ymbols"
+            keymap.set("n", "ds", builtin.lsp_document_symbols, opts)
 
             opts.desc = "See available code actions"
             keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
