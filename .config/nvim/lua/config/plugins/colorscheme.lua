@@ -4,6 +4,11 @@ function ColorMyWindow(colorscheme)
 
     vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
     vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+
+    -- Set border for hover float window
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+        border = "single" -- You can change "single" to other values like "double", "rounded", etc.
+    })
 end
 
 return {
