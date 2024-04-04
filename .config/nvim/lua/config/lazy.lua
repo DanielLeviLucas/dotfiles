@@ -11,33 +11,30 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup(
-    {
-        { import = "config.plugins" },
-        { import = "config.plugins.lsp" },
+require("lazy").setup({
+  { import = "config.plugins" },
+  { import = "config.plugins.lsp" },
+}, {
+  checker = {
+    enable = true,
+    notify = false,
+  },
+  change_detection = {
+    notify = false,
+  },
+  ui = {
+    icons = {
+      cmd = "⌘",
+      config = "🛠",
+      event = "📅",
+      ft = "📂",
+      init = "⚙",
+      keys = "🗝",
+      plugin = "🔌",
+      runtime = "💻",
+      source = "📄",
+      start = "🚀",
+      task = "📌",
     },
-    {
-        checker = {
-            enable = true,
-            notify = false,
-        },
-        change_detection = {
-            notify = false
-        },
-        ui = {
-            icons = {
-              cmd = "⌘",
-              config = "🛠",
-              event = "📅",
-              ft = "📂",
-              init = "⚙",
-              keys = "🗝",
-              plugin = "🔌",
-              runtime = "💻",
-              source = "📄",
-              start = "🚀",
-              task = "📌",
-            },
-        },
-    }
-)
+  },
+})

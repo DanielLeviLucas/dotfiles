@@ -1,10 +1,10 @@
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
     vim.highlight.on_yank()
   end,
   group = highlight_group,
-  pattern = '*',
+  pattern = "*",
 })
 
 -- netrw
@@ -78,7 +78,6 @@ opt.equalalways = false -- I don't like my windows changing all the time
 opt.updatetime = 1000 -- Make updates happen faster
 opt.hlsearch = true -- I wouldn't use this without my DoNoHL function
 opt.scrolloff = 16 -- Make it so there are always ten lines below my cursor
-
 
 -- Cursorline highlighting control
 --  Only have it on in the active buffer
