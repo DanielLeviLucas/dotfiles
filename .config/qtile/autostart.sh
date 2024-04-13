@@ -1,5 +1,5 @@
 #!/usr/bin/env bash 
-picom &
+picom --experimental-backends &
 conky -c $HOME/.config/conky/qtile/dracula_theme.conkyrc &
 dunst &
 nitrogen --restore &
