@@ -140,8 +140,8 @@ keys = [
         desc='Switch window focus to other pane(s) of stack'
         ),
     Key([mod, "shift"], "space",
-        lazy.layout.toggle_split(),
-        desc='Toggle between split and unsplit sides of stack'
+        lazy.spawn("setxkbmap us dvorak"),
+        desc='Chage keyboard layout to Dvorak'
         ),
     Key([mod, "shift"], "p",
         lazy.spawn("player-play-pause"),
