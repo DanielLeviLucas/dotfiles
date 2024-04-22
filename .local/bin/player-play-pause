@@ -1,2 +1,4 @@
 #!/bin/bash
-playerctl --player=spotify play-pause
+playerctl --player=spotify play-pause && sleep 0.1
+status=$(playerctl --player=spotify status)
+dunstify -i ~/.icons/circle-play-regular.svg "$status" -t 1500
