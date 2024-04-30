@@ -2,4 +2,5 @@
 playerctl --player=spotify play-pause && sleep 0.1
 status=$(playerctl --player=spotify status)
 song_name=$(playerctl --player=spotify metadata title)
-dunstify -i ~/.icons/circle-play-regular.svg "$status" "$song_name" -t 1500
+artist_name=$(playerctl --player=spotify metadata artist)
+dunstify -i ~/.icons/circle-play-regular.svg "$status" "$artist_name - $song_name" -t 1500
