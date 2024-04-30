@@ -418,7 +418,7 @@ def init_widgets_list():
         widget.Volume(
             foreground=colors[3],
             background=colors[0],
-            fmt='  {}',
+            fmt='   {}',
             padding=5,
             decorations=[
                 BorderDecoration(
