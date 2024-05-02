@@ -1,6 +1,18 @@
 #!/bin/bash
 playerctl --player=spotify play-pause && sleep 0.1
+
 status=$(playerctl --player=spotify status)
 song_name=$(playerctl --player=spotify metadata title)
 artist_name=$(playerctl --player=spotify metadata artist)
-dunstify -i ~/.icons/circle-play-regular.svg "$status" "$artist_name - $song_name" -t 1500
+
+art_url=$(playerctl --player=spotify metadata mpris:artUrl)
+song_uid=$(basename "$art_url")
+temp_file_path="/tmp/spotify-$song_uid"
+
+if [ -e "$temp_file_path" ]; then
+    dunstify "$status" "$artist_name - $song_name" -i "$temp_file_path" -t 2000
+else
+    touch "$temp_file_path"
+    curl "$art_url" --output "/tmp/spotify-$song_uid"
+    dunstify "$status" "$artist_name - $song_name" -i "$temp_file_path" -t 2000
+fi
