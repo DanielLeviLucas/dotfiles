@@ -7,12 +7,12 @@ artist_name=$(playerctl --player=spotify metadata artist)
 
 art_url=$(playerctl --player=spotify metadata mpris:artUrl)
 song_uid=$(basename "$art_url")
-temp_file_path="/tmp/spotify-$song_uid"
+cover_art_cache_path="$HOME/.cache/spotify/Data/cover_art_cache/$song_uid - $song_name - $artist_name"
 
-if [ -e "$temp_file_path" ]; then
-    dunstify "$status" "$artist_name - $song_name" -i "$temp_file_path" -t 2000
+if [ -e "$cover_art_cache_path" ]; then
+    dunstify "$status" "$artist_name - $song_name" -i "$cover_art_cache_path" -t 2000
 else
-    touch "$temp_file_path"
-    curl "$art_url" --output "/tmp/spotify-$song_uid"
-    dunstify "$status" "$artist_name - $song_name" -i "$temp_file_path" -t 2000
+    touch "$cover_art_cache_path"
+    curl "$art_url" --output "$cover_art_cache_path"
+    dunstify "$status" "$artist_name - $song_name" -i "$cover_art_cache_path" -t 2000
 fi
