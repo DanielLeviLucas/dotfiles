@@ -701,6 +701,7 @@ local plugins = {
           "scss",
           "less",
           "svelte",
+          "htmldjango",
         },
       })
 
