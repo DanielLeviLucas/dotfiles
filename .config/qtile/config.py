@@ -3,6 +3,7 @@ import os
 import socket
 import subprocess
 import psutil
+from datetime import datetime
 from libqtile import qtile
 from libqtile.config import Click, Drag, Key, Match, Screen, Group, KeyChord
 from libqtile import layout, bar, hook
@@ -27,8 +28,11 @@ keys = [
         lazy.spawn("rofi -show drun"),
         desc='Run Launcher'
         ),
-   Key([mod, "shift"], "s",
-        lazy.spawn("scrot -s -q 100 -z 0 -f"),
+    Key([mod, "shift"], "s",
+        lazy.spawn(
+            f"scrot -s --freeze -q 100 -z \
+              {HOME_DIR}/Screenshorts/{datetime.now().strftime("%Y-%m-%d_%H:%M:%S:%f")}.png"
+        ),
         desc='capture a selected area'
         ),
     Key([mod], "v",
