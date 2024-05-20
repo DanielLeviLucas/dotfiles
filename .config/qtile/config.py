@@ -29,10 +29,7 @@ keys = [
         desc='Run Launcher'
         ),
     Key([mod, "shift"], "s",
-        lazy.spawn(
-            f"scrot -s --freeze -q 100 -z \
-              {HOME_DIR}/Screenshorts/{datetime.now().strftime("%Y-%m-%d_%H:%M:%S:%f")}.png"
-        ),
+        lazy.spawn("capture-selection"),
         desc='capture a selected area'
         ),
     Key([mod], "v",

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+nohup scrot -s --freeze -q 100 -z $HOME/Screenshorts/$(date | sed 's/ /_/g').png && \
+dunstify -t 2000 Scrot 'Screenshort Captured' -I /usr/share/icons/Adwaita/scalable/mimetypes/image-x-generic.svg
