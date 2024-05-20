@@ -259,6 +259,7 @@ local plugins = {
         css = { { "prettierd", "prettier" } },
         scss = { { "prettierd", "prettier" } },
         proto = { "buf" },
+        sh = { "shfmt" },
       },
     },
   },
