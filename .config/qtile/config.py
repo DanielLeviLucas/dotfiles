@@ -419,6 +419,9 @@ def init_widgets_list():
         widget.Volume(
             foreground=colors[3],
             background=colors[0],
+            mouse_callbacks = {
+                'Button1': lambda: qtile.cmd_spawn("pavucontrol"),
+            },
             fmt='   {}',
             padding=5,
             decorations=[
