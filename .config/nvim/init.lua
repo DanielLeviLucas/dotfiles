@@ -1119,7 +1119,7 @@ local plugins = {
       vim.o.timeoutlen = 750
     end,
     opts = {
-      window = {
+      win = {
         border = "single",
       },
     },
