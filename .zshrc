@@ -201,7 +201,9 @@ alias tobash="sudo chsh $USER -s /bin/bash && echo 'Now log out.'"
 alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Now log out.'"
 alias tofish="sudo chsh $USER -s /bin/fish && echo 'Now log out.'"
 
+# Helpful aliases
 alias ff="tmux-sessionizer"
+alias fo='nvim $(fzf --preview="bat --color=always {}")'
 
 ### zsh plugins ###
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
