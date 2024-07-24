@@ -1,9 +1,13 @@
 ## EXPORT
 export TERM="xterm-256color"                      # getting proper colors
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
+export EDITOR="nvim"
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
+### "nvim" as manpager
+export MANPAGER="nvim +Man!"
 
 # History
 HISTFILE=~/.cache/zsh/history
@@ -17,6 +21,7 @@ setopt histignorealldups
 setopt histignorespace
 setopt SHARE_HISTORY
 
+set -o emacs
 bindkey \^U backward-kill-line
 
 # Basic auto/tab complete:
