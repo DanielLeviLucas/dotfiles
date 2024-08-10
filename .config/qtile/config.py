@@ -422,7 +422,7 @@ def init_widgets_list():
             mouse_callbacks = {
                 'Button1': lambda: qtile.cmd_spawn("pavucontrol"),
             },
-            fmt='   {}',
+            fmt='🕫 {}',
             padding=5,
             decorations=[
                 BorderDecoration(
