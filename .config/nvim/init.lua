@@ -783,6 +783,11 @@ local plugins = {
         capabilities = capabilities,
         on_attach = on_attach,
       })
+
+      lspconfig["clangd"].setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
     end,
   },
   -- }}}
@@ -819,6 +824,7 @@ local plugins = {
         -- list of servers for mason to install
         ensure_installed = {
           "tsserver",
+          "clangd",
           "html",
           "cssls",
           "tailwindcss",
