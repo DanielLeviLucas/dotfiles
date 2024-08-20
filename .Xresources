@@ -5,7 +5,7 @@ Xft.rgba: rgb
 Xft.autohint: true
 Xft.hintstyle: hintfull
 Xft.lcdfilter: lcdfilter
-Xcursor.size: 32
+Xcursor.size: 38
 
 XTerm*renderFont: true
 XTerm*faceName: xft:Mononoki Nerd Font, \
