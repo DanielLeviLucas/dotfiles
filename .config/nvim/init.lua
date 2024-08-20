@@ -239,14 +239,14 @@ local plugins = {
           require("conform").format({ async = true, lsp_fallback = true })
         end,
         mode = "",
-        desc = "Format buffer",
+        desc = "Format buffer using conform",
       },
     },
     opts = {
       formatters_by_ft = {
         lua = { "stylua" },
         -- Conform can also run multiple formatters sequentially
-        python = { "autoflake", "isort", "autopep8" },
+        python = { "isort", "ruff_format" },
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
@@ -343,7 +343,7 @@ local plugins = {
         },
       })
     end,
-  },-- }}}
+  }, -- }}}
   -- Comment - Smart and Powerful commenter {{{
   {
     "numToStr/Comment.nvim",
@@ -842,7 +842,7 @@ local plugins = {
           "prettier", -- prettier formatter
           "stylua", -- lua formatter
           "isort", -- python formatter
-          "black", -- python formatter
+          "ruff", -- python formatter
           "pylint", -- python linter
           "eslint_d", -- js linter
         },
