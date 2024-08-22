@@ -2,6 +2,12 @@
 playerctl --player=spotify play-pause && sleep 0.1
 
 status=$(playerctl --player=spotify status)
+
+if [ "$status" == "" ]; then
+    dunstify "Notification" "No Players found" -I /usr/share/icons/Adwaita/scalable/places/folder-music.svg -t 2000
+    exit 0
+fi
+
 song_name=$(playerctl --player=spotify metadata title)
 artist_name=$(playerctl --player=spotify metadata artist)
 
