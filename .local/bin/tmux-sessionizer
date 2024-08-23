@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/Workspace/python-projects ~/Workspace/go-projects ~/Workspace/rust-projects  ~/Workspace/ts-projects ~/Workspace/kotlin-projects ~/Workspace/zig-projects -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find ~/Workspace/python ~/Workspace/go ~/Workspace/rust ~/Workspace/ts ~/Workspace/kotlin ~/Workspace/zig -mindepth 1 -maxdepth 2 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then
