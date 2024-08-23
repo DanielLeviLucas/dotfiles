@@ -88,6 +88,7 @@ esac
 #### vim and emacs
 alias vim="nvim"
 alias cat="bat"
+alias virtualenv="virtualenv --pip=embed --setuptools=embed --wheel=embed --no-periodic-update"
 
 # Changing "ls" to "exa" {{{
 alias la='eza -al --color=always --icons --group-directories-first'   # my preferred listing
