@@ -16,8 +16,6 @@ zle -N vi-yank-wrapped
 bindkey -s "^y" "yy\n"
 # }}}
 
-bindkey \^U backward-kill-line
-
 # Menu
 bindkey -rpM menuselect ""
 bindkey -M menuselect "^I"        complete-word
@@ -33,3 +31,4 @@ bindkey -M command "^[" send-break
 bindkey -M command "^M" accept-line
 
 set -o emacs
+bindkey \^U backward-kill-line
