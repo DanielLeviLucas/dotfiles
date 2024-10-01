@@ -1,0 +1,177 @@
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.fontSize": 18,
+  "editor.formatOnSave": false,
+  "breadcrumbs.enabled": false,
+  "workbench.colorTheme": "Dracula Refined",
+  "editor.autoClosingBrackets": "never",
+  "editor.autoClosingQuotes": "never",
+  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.fontFamily": "'Jetbrains Mono'",
+  "editor.fontFamily": "'Jetbrains Mono', monospace",
+  "editor.fontLigatures": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "explorer.confirmDelete": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "trailing-spaces.trimOnSave": true,
+  "git.autofetch": true,
+  "typescript.suggest.autoImports": false,
+  "javascript.suggest.autoImports": false,
+  "todohighlight.isEnable": true,
+  "todohighlight.isCaseSensitive": true,
+  "todohighlight.keywords": [
+    "REVIEW:",
+    "FIXME:",
+    "TODO:",
+    {
+      "text": "TEMP:",
+      "color": "#0D0D0D",
+      "backgroundColor": "yellow",
+      "overviewRulerColor": "grey"
+    }
+  ],
+  "editor.rulers": [80, 100],
+  "javascript.suggest.includeAutomaticOptionalChainCompletions": false,
+  "typescript.suggest.includeAutomaticOptionalChainCompletions": false,
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.tokenColorCustomizations": {
+    "comments": "#FF6263"
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#008f8e",
+    "activityBarBadge.background": "#ff0000",
+    "activityBar.inactiveForeground": "#191a21",
+    "sideBar.background": "#191a21",
+    "button.background": "#008f8e",
+    "editorRuler.foreground": "#ffffff4b"
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.enablePersistentSessions": false,
+
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "python.analysis.autoImportCompletions": false,
+  "[django-html]": {
+    "editor.formatOnSave": false
+  },
+
+  "files.associations": {
+    "**/*.html": "html",
+    "**/templates/**/*.html": "django-html",
+    "**/templates/**/*": "django-txt",
+    "**/requirements{/**,*}.{txt,in}": "pip-requirements",
+    "*.html.erb": "erb"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
+  },
+  "html.format.enable": false,
+  "html.format.templating": true,
+  "tailwindCSS.emmetCompletions": true,
+  "emmet.triggerExpansionOnTab": true,
+  "editor.cursorBlinking": "solid",
+  "editor.cursorStyle": "block",
+  "editor.tabSize": 4,
+  "files.exclude": {
+    "**/.pyc": true
+  },
+  "files.watcherExclude": {
+    "**/.pyc": true
+  },
+  "search.exclude": {
+    "**/*.pyc": true
+  },
+  "editor.foldingMaximumRegions": 65000,
+  "window.commandCenter": false,
+  "workbench.layoutControl.enabled": false,
+  "workbench.localHistory.exclude": {
+    "**/.pyc": true
+  },
+  "editor.minimap.enabled": false,
+  "editor.accessibilitySupport": "off",
+  "security.workspace.trust.untrustedFiles": "open",
+  "vim.leader": " ",
+  "vim.hlsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.smartRelativeLine": true,
+  "vim.cursorStylePerMode.insert": "line-thin",
+  "workbench.sideBar.location": "right",
+  "workbench.startupEditor": "none",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // NAVIGATION
+    // switch b/w buffers
+    { "before": ["<S-h>"], "commands": [":bprevious"] },
+    { "before": ["<S-l>"], "commands": [":bnext"] },
+
+    // splits
+    { "before": ["leader", "v"], "commands": [":vsplit"] },
+    { "before": ["leader", "s"], "commands": [":split"] },
+
+    // panes
+    {
+      "before": ["leader", "h"],
+      "commands": ["workbench.action.focusLeftGroup"]
+    },
+    {
+      "before": ["leader", "j"],
+      "commands": ["workbench.action.focusBelowGroup"]
+    },
+    {
+      "before": ["leader", "k"],
+      "commands": ["workbench.action.focusAboveGroup"]
+    },
+    {
+      "before": ["leader", "l"],
+      "commands": ["workbench.action.focusRightGroup"]
+    },
+
+    //nice to have
+    {
+      "before": ["[", "d"],
+      "commands": ["editor.action.marker.prev"]
+    },
+    {
+      "before": ["]", "d"],
+      "commands": ["editor.action.marker.next"]
+    },
+    {
+      "before": ["<leader>", "c", "a"],
+      "commands": ["editor.action.quickFix"]
+    },
+    { "before": ["leader", "f"], "commands": ["workbench.action.quickOpen"] },
+    {
+      "before": ["leader", "c", "f"],
+      "commands": ["editor.action.formatDocument"]
+    },
+    {
+      "before": ["g", "h"],
+      "commands": ["editor.action.showDefinitionPreviewHover"]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    // Stay in visual mode while indenting
+    { "before": ["<"], "commands": ["editor.action.outdentLines"] },
+    { "before": [">"], "commands": ["editor.action.indentLines"] },
+
+    // Move selected lines while staying in visual mode
+    { "before": ["J"], "commands": ["editor.action.moveLinesDownAction"] },
+    { "before": ["K"], "commands": ["editor.action.moveLinesUpAction"] },
+
+    // toggle comment selection
+    {
+      "before": ["leader", "g", "c"],
+      "commands": ["editor.action.commentLine"]
+    }
+  ],
+  "window.menuBarVisibility": "toggle"
+}
