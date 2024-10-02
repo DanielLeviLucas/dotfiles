@@ -181,7 +181,7 @@ opt.joinspaces = false
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 opt.list = true
-opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+opt.listchars = { tab = "󰌒 ", trail = "_", nbsp = "." }
 
 -- Preview substitutions live, as you type!
 opt.inccommand = "split"
@@ -246,7 +246,7 @@ local plugins = {
       formatters_by_ft = {
         lua = { "stylua" },
         -- Conform can also run multiple formatters sequentially
-        python = { "isort", "ruff_format" },
+        python = { "isort", "black" },
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
@@ -560,7 +560,7 @@ local plugins = {
 
         require("telescope.pickers")
           .new({}, {
-            prompt_title = "󰺛 Harpoon",
+            prompt_title = "󰛢 Harpoon",
             finder = require("telescope.finders").new_table({
               results = file_paths,
             }),
@@ -716,6 +716,11 @@ local plugins = {
       })
 
       lspconfig["tailwindcss"].setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
+
+      lspconfig["yamlls"].setup({
         capabilities = capabilities,
         on_attach = on_attach,
       })
@@ -900,9 +905,12 @@ local plugins = {
         }),
         -- configure lspkind for vs-code like pictograms in completion menu
         formatting = {
+          fields = {},
+          expandable_indicator = false,
           format = lspkind.cmp_format({
+            mode = "symbol",
             maxwidth = 50,
-            ellipsis_char = "...",
+            ellipsis_char = "󰴲 ",
           }),
         },
       })
@@ -1118,6 +1126,8 @@ local plugins = {
         },
         sync_install = false,
         auto_install = true,
+        ignore_install = {},
+        modules = {},
 
         highlight = {
           enable = true,
@@ -1134,6 +1144,29 @@ local plugins = {
       vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle Undotree" })
     end,
   },
+  -- }}}
+  -- Trouble - A pretty list for showing diagnostics, references, telescope results, quickfix and location lists {{{
+  {
+    "folke/trouble.nvim",
+    config = function()
+      require("trouble").setup({
+        icons = false,
+      })
+
+      vim.keymap.set("n", "<leader>tt", function()
+        require("trouble").toggle()
+      end)
+
+      vim.keymap.set("n", "[t", function()
+        require("trouble").next({ skip_groups = true, jump = true })
+      end)
+
+      vim.keymap.set("n", "]t", function()
+        require("trouble").previous({ skip_groups = true, jump = true })
+      end)
+    end,
+  },
+
   -- }}}
   -- Which-key - Displays a popup with possible keybindings of the command {{{
   {
