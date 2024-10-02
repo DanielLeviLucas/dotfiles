@@ -308,6 +308,7 @@ local plugins = {
       vim.cmd("colorscheme dracula")
       vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
       vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+      vim.api.nvim_set_hl(0, 'Comment', { fg = '#FF6263' })
 
       -- Set border for hover float window
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
