@@ -115,11 +115,14 @@ opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or 
 opt.splitright = true -- split vertical window to the right
 opt.splitbelow = true -- split horizontal window to the bottom
 
--- turn off swapfile
-opt.swapfile = false
-
 opt.backup = false
+
+-- Cache/Log file
+opt.swapfile = false
 opt.undofile = true
+opt.undodir = vim.fn.expand("$HOME/.cache/nvim/undo")
+opt.viewdir = vim.fn.expand("$HOME/.cache/nvim/view")
+vim.lsp.set_log_level("off")
 
 opt.signcolumn = "yes"
 opt.isfname:append("@-@")
