@@ -191,6 +191,19 @@ opt.fillchars = { eob = "3" }
 vim.opt.diffopt = { "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal" }
 
 opt.belloff = "all"
+
+vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
+
+vim.diagnostic.config({
+  virtual_text = true,
+  float = { border = "single", focusable = false },
+
+  update_in_insert = true,
+  severity_sort = true,
+})
 -- }}}
 
 -- Disable bulitins{{{
@@ -314,7 +327,6 @@ local plugins = {
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
         border = "single", -- You can change "single" to other values like "double", "rounded", etc.
       })
-      vim.diagnostic.config({ float = { border = "single" } })
     end,
   },
   -- }}}
@@ -692,7 +704,7 @@ local plugins = {
       local signs = {
         Error = " ",
         Warn = " ",
-        Hint = "󰠠 ",
+        Hint = "󰌵",
         Info = " ",
       }
 
