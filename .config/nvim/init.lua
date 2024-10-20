@@ -301,7 +301,7 @@ local plugins = {
           bg = "#191724",
           fg = "#F8F8F2",
           selection = "#282A36",
-          -- comment = "#FF5555",
+          comment = "#6272A4",
           red = "#FF5555",
           orange = "#FFB86C",
           yellow = "#F1FA8C",
@@ -316,23 +316,31 @@ local plugins = {
           bright_magenta = "#FF92DF",
           bright_cyan = "#A4FFFF",
           bright_white = "#FFFFFF",
-          menu = "#3E4452",
+          menu = "#21222C",
           visual = "#3E4452",
           gutter_fg = "#4B5263",
           nontext = "#3B4048",
           white = "#ABB2BF",
           black = "#191A21",
         },
-        show_end_of_buffer = true,
+        show_end_of_buffer = false,
         transparent_bg = false,
-        lualine_bg_color = "#44475a",
         italic_comment = false,
-        overrides = {},
+        overrides = {
+          -- Improve cmp dropdown contrast
+          CmpItemAbbr = { fg = "#F8F8F2" },
+          CmpItemAbbrMatch = { fg = "#50fa7b", bold = true },
+          CmpItemKind = { fg = "#BD93F9" },
+          CmpItemMenu = { fg = "#6272A4" },
+          Pmenu = { bg = "#282A36" },
+          PmenuSel = { bg = "#44475A", fg = "#F8F8F2" },
+        },
       })
-      vim.cmd("colorscheme dracula")
+      vim.cmd([[colorscheme dracula]])
+
       vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
       vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-      vim.api.nvim_set_hl(0, 'Comment', { fg = '#FF6263' })
+      vim.api.nvim_set_hl(0, "Comment", { fg = "#FF6263" })
 
       -- Set border for hover float window
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
@@ -877,7 +885,7 @@ local plugins = {
   -- Nvim-cmp - A completion plugin {{{
   {
     "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
+    event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
       "hrsh7th/cmp-buffer", -- source for text in buffer
       "hrsh7th/cmp-path", -- source for file system paths
@@ -901,6 +909,12 @@ local plugins = {
         completion = {
           completeopt = "menu,menuone,preview,noselect",
         },
+
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
+
         snippet = { -- configure how nvim-cmp interacts with snippet engine
           expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -924,6 +938,8 @@ local plugins = {
         }),
         -- configure lspkind for vs-code like pictograms in completion menu
         formatting = {
+          expandable_indicator = true,
+          fields = { "abbr", "kind", "menu" },
           format = lspkind.cmp_format({
             maxwidth = 50,
             ellipsis_char = "...",
