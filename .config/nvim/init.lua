@@ -4,6 +4,8 @@
 -- |  |  |     | | | |-   -|   __|  |__
 -- |____/|__|__|_|___|_____|_____|_____|
 
+require("terminal")
+
 -- Genaral Keymaps{{{
 -- set leader key to space
 vim.g.mapleader = " "
