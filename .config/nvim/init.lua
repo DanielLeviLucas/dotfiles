@@ -284,6 +284,7 @@ local plugins = {
         scss = { { "prettierd", "prettier" } },
         proto = { "buf" },
         sh = { "shfmt" },
+        yaml = { "yamlfmt" },
       },
     },
   },
