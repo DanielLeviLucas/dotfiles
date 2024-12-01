@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+tablet_id=$(xsetwacom list devices | grep "STYLUS" | sed 's/.*id: \([0-9]\+\).*/\1/')
+set "$tablet_id" MapToOutput 1920x1080+1920+0
+xsetwacom set "$tablet_id" MapToOutput 1920x1080+1920+0
+xsetwacom set "$tablet_id" Area 0 0 21600 12150
+xsetwacom set "$tablet_id" PressureCurve 0 0 100 100
+# xsetwacom set "$tablet_id" Button 2 "Key f"
+# xsetwacom set "$tablet_id" Button 3 "Key a"
