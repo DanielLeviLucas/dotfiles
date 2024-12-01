@@ -150,7 +150,6 @@ opt.hidden = true -- I like having buffers stay around
 opt.equalalways = false -- I don't like my windows changing all the time
 opt.updatetime = 1000 -- Make updates happen faster
 opt.hlsearch = true -- I wouldn't use this without my DoNoHL function
-opt.scrolloff = 16 -- Make it so there are always ten lines below my cursor
 
 -- Cursorline highlighting control
 --  Only have it on in the active buffer
@@ -240,6 +239,14 @@ local plugins = {
   -- Plenary - lua functions that many plugins use {{{
   "nvim-lua/plenary.nvim",
   -- }}}
+  -- Neoscroll - Smooth scrolling plugin {{{
+  {
+    "karb94/neoscroll.nvim",
+    config = function()
+      require("neoscroll").setup({})
+    end,
+  },
+  --- }}}
   -- Colorizer - A high-performance color highlighter {{{
   {
     "NvChad/nvim-colorizer.lua",
