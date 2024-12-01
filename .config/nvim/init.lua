@@ -293,6 +293,18 @@ local plugins = {
         sh = { "shfmt" },
         yaml = { "yamlfmt" },
       },
+      formatters = {
+        autoflake = {
+          command = "autoflake",
+          args = {
+            "--remove-all-unused-imports",
+            "--remove-duplicate-keys",
+            "--remove-unused-variables",
+            "--in-place",
+            "-",
+          },
+        },
+      },
     },
   },
   -- }}}
