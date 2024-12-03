@@ -285,6 +285,19 @@ local plugins = {
     end,
   },
   --- }}}
+  -- Nvim-lsp-notify - NVIM plugin to notify about LSP processes {{{
+  {
+    "mrded/nvim-lsp-notify",
+    dependencies = { "rcarriga/nvim-notify" },
+    config = function()
+      require("lsp-notify").setup({
+        notify = require("notify"),
+        background_colour = "#000000",
+      })
+      vim.cmd([[highlight NotifyBackground guibg=#000000]])
+    end,
+  },
+  -- }}}
   -- Colorizer - A high-performance color highlighter {{{
   {
     "NvChad/nvim-colorizer.lua",
@@ -695,9 +708,6 @@ local plugins = {
         "antosha417/nvim-lsp-file-operations",
         config = true,
       },
-      -- Useful status updates for LSP.
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { "j-hui/fidget.nvim", opts = {} },
       -- 'neodev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
       { "folke/neodev.nvim", opts = {} },
