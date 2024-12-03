@@ -150,6 +150,7 @@ opt.hidden = true -- I like having buffers stay around
 opt.equalalways = false -- I don't like my windows changing all the time
 opt.updatetime = 1000 -- Make updates happen faster
 opt.hlsearch = true -- I wouldn't use this without my DoNoHL function
+opt.scrolloff = 16 -- Make it so there are always ten lines below my cursor
 
 -- Cursorline highlighting control
 --  Only have it on in the active buffer
@@ -243,7 +244,44 @@ local plugins = {
   {
     "karb94/neoscroll.nvim",
     config = function()
-      require("neoscroll").setup({})
+      require("neoscroll").setup({
+        performance_mode = true,
+        hide_cursor = true,
+      })
+
+      local neoscroll = require("neoscroll")
+
+      keymap = {
+        ["<C-u>"] = function()
+          neoscroll.ctrl_u({ duration = 100 })
+        end,
+
+        ["<C-d>"] = function()
+          neoscroll.ctrl_d({ duration = 100 })
+        end,
+
+        ["<C-b>"] = function()
+          neoscroll.ctrl_b({ duration = 200 })
+        end,
+
+        ["<C-f>"] = function()
+          neoscroll.ctrl_f({ duration = 200 })
+        end,
+
+        ["zt"] = function()
+          neoscroll.zt({ half_win_duration = 100 })
+        end,
+        ["zz"] = function()
+          neoscroll.zz({ half_win_duration = 100 })
+        end,
+        ["zb"] = function()
+          neoscroll.zb({ half_win_duration = 100 })
+        end,
+      }
+      local modes = { "n", "v", "x" }
+      for key, func in pairs(keymap) do
+        vim.keymap.set(modes, key, func)
+      end
     end,
   },
   --- }}}
