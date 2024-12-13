@@ -22,16 +22,14 @@
     ### Geometry ###
 
     # dynamic width from 0 to x
-    width = (0,800)
-
-    # The maximum height of a single notification, excluding the frame.
-    height = 300
+    width = (0,900)
+    height = (0,900)
 
     # Position the notification in the top right corner
     origin = top-right
 
     # Offset from the origin
-    offset = 5x32
+    offset = (5,32)
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
