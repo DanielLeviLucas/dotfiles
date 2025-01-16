@@ -1,0 +1,16 @@
+font-size = 16
+font-feature = ~ss20 calt -liga
+
+theme = Edho-Dracula
+
+cursor-style = block
+cursor-opacity = 0.85
+shell-integration-features = no-cursor
+
+quick-terminal-animation-duration = 0
+window-decoration = false
+window-theme = dark
+class = com.myterm.ghostty
+gtk-wide-tabs = false
+
+image-storage-limit = 25165824
