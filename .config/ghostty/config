@@ -1,16 +1,25 @@
-font-size = 16
-font-feature = ~ss20 calt -liga
-
 theme = Edho-Dracula
+
+window-theme = dark
+window-decoration = false
+gtk-wide-tabs = false
+
+font-size = 16
+
+window-padding-y = 12
+
+font-feature = -ss20 
+font-feature = -calt 
+font-feature = -liga
+font-feature = -dlig
 
 cursor-style = block
 cursor-opacity = 0.85
+
 shell-integration-features = no-cursor
 
-quick-terminal-animation-duration = 0
-window-decoration = false
-window-theme = dark
 class = com.myterm.ghostty
-gtk-wide-tabs = false
+
+quick-terminal-animation-duration = 0
 
 image-storage-limit = 25165824
