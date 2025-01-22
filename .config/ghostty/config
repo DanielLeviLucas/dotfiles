@@ -23,3 +23,5 @@ class = com.myterm.ghostty
 quick-terminal-animation-duration = 0
 
 image-storage-limit = 25165824
+
+adjust-underline-position = 5
