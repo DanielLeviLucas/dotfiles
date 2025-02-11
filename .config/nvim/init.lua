@@ -332,14 +332,14 @@ local plugins = {
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        svelte = { { "prettierd", "prettier" } },
-        javascript = { { "prettierd", "prettier" } },
-        typescript = { { "prettierd", "prettier" } },
-        javascriptreact = { { "prettierd", "prettier" } },
-        typescriptreact = { { "prettierd", "prettier" } },
-        json = { { "prettierd", "prettier" } },
-        css = { { "prettierd", "prettier" } },
-        scss = { { "prettierd", "prettier" } },
+        svelte = { "prettierd", "prettier" },
+        javascript = { "prettierd", "prettier" },
+        typescript = { "prettierd", "prettier" },
+        javascriptreact = { "prettierd", "prettier" },
+        typescriptreact = { "prettierd", "prettier" },
+        json = { "prettierd", "prettier" },
+        css = { "prettierd", "prettier" },
+        scss = { "prettierd", "prettier" },
         proto = { "buf" },
         sh = { "shfmt" },
         yaml = { "yamlfmt" },
@@ -887,6 +887,12 @@ local plugins = {
       lspconfig["clangd"].setup({
         capabilities = capabilities,
         on_attach = on_attach,
+      })
+
+      lspconfig["zls"].setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        filetypes = { "zig" },
       })
     end,
   },
