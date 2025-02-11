@@ -1,0 +1,33 @@
+[includeIf "gitdir:~/Workspace/work"]
+    path = ~/Workspace/work/.gitconfig
+
+[includeIf "gitdir:~/Workspace/personal"]
+    path = ~/Workspace/personal/.gitconfig
+
+[includeIf "gitdir:~/Workspace/oss"]
+    path = ~/Workspace/oss/.gitconfig
+
+[rerere]
+	enabled = true
+
+[core]
+	autocrlf = true
+
+[branch]
+	sort = -committerdate
+
+[fetch]
+	prune = true
+
+[alias]
+    push = push --force-with-lease
+    brancha = branch --column -a
+    watch = maintenance start
+    unwatch = maintenance stop
+
+[credential]
+	helper = store
+
+[user]
+	email = daniellevilucas@gmail.com
+    name = Daniel S A
