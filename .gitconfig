@@ -11,7 +11,7 @@
 	enabled = true
 
 [core]
-	autocrlf = true
+	autocrlf = false
 
 [branch]
 	sort = -committerdate
