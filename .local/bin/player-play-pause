@@ -16,9 +16,9 @@ song_uid=$(basename "$art_url")
 cover_art_cache_path="$HOME/.cache/spotify/Data/cover_art_cache/$song_uid - $song_name - $artist_name"
 
 if [ -e "$cover_art_cache_path" ]; then
-    dunstify "$status" "$artist_name - $song_name" -i "$cover_art_cache_path" -t 2000
+    dunstify "$status" "$artist_name - $song_name" -I "$cover_art_cache_path" -t 2000
 else
     touch "$cover_art_cache_path"
     curl "$art_url" --output "$cover_art_cache_path"
-    dunstify "$status" "$artist_name - $song_name" -i "$cover_art_cache_path" -t 2000
+    dunstify "$status" "$artist_name - $song_name" -I "$cover_art_cache_path" -t 2000
 fi
