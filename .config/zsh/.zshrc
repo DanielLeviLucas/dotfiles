@@ -1,6 +1,10 @@
 # vim:fileencoding=utf-8:foldmethod=marker
 ## EXPORT
-export TERM="xterm-256color"                      # getting proper colors
+if [[ -n $TMUX ]]; then
+  export TERM=tmux-256color
+else
+  export TERM="xterm-256color"                      # getting proper colors
+fi
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
