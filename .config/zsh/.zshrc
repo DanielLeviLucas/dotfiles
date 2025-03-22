@@ -74,6 +74,9 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 export GOPATH="$HOME/go/packages"
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
+export ZIG_HOME="$HOME/.zig"
+export PATH="$PATH:$ZIG_HOME/v0.14.0-dev"
+
 eval $(luarocks path --bin)
 #: }}}
 
@@ -154,6 +157,9 @@ source $ZSHAREDIR/fzf/shell/key-bindings.zsh
 
 source $ZDOTDIR/keymap.zsh
 source $ZDOTDIR/function.zsh
+
+## UV auto completion
+eval "$(uv generate-shell-completion zsh)"
 
 ### SETTING THE STARSHIP PROMPT ###
 eval "$(starship init zsh)"
