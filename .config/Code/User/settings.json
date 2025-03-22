@@ -60,6 +60,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
+  "python.languageServer": "Pylance",
   "python.analysis.autoImportCompletions": false,
   "[django-html]": {
     "editor.formatOnSave": false
