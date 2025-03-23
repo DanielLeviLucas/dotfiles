@@ -2,8 +2,8 @@
   "workbench.iconTheme": "material-icon-theme",
   "editor.fontSize": 18,
   "editor.formatOnSave": false,
-  "breadcrumbs.enabled": false,
   "workbench.colorTheme": "Dracula Refined",
+  "workbench.editor.showTabs": "none",
   "editor.autoClosingBrackets": "never",
   "editor.autoClosingQuotes": "never",
   "terminal.integrated.fontSize": 12,
@@ -61,7 +61,6 @@
   },
 
   "python.languageServer": "Pylance",
-  "python.analysis.autoImportCompletions": false,
   "[django-html]": {
     "editor.formatOnSave": false
   },
@@ -94,6 +93,7 @@
   },
   "editor.foldingMaximumRegions": 65000,
   "window.commandCenter": false,
+  "window.menuBarVisibility": "hidden",
   "workbench.layoutControl.enabled": false,
   "workbench.localHistory.exclude": {
     "**/.pyc": true
@@ -155,7 +155,7 @@
       "commands": ["editor.action.formatDocument"]
     },
     {
-      "before": ["g", "h"],
+      "before": ["K"],
       "commands": ["editor.action.showDefinitionPreviewHover"]
     }
   ],
@@ -173,6 +173,5 @@
       "before": ["leader", "g", "c"],
       "commands": ["editor.action.commentLine"]
     }
-  ],
-  "window.menuBarVisibility": "toggle"
+  ]
 }
