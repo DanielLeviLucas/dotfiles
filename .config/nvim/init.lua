@@ -975,6 +975,7 @@ local plugins = {
         -- debuggers
         "debugpy",
         "go-debug-adapter",
+        "delve",
 
         -- formatters
         "stylua",
@@ -990,7 +991,12 @@ local plugins = {
         automatic_installation = false,
         handlers = {
           function(server_name)
+            if server_name == "ruff" then
+              return nil
+            end
+
             local server = servers[server_name] or {}
+
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for ts_ls)
