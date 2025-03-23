@@ -86,8 +86,8 @@ vim.g.have_nerd_font = true
 
 local opt = vim.opt
 
--- disable mouse
-opt.mouse = ""
+-- enable/disable mouse support
+opt.mouse = "a"
 
 -- tabs & indentation
 opt.tabstop = 4 -- 4 spaces for tabs (prettier default)
