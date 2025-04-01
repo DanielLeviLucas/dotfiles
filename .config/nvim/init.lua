@@ -938,6 +938,25 @@ local plugins = {
             },
           },
         },
+
+        basedpyright = {
+          -- cmd = { ... },
+          -- capabilities = {},
+          filetypes = { "python" },
+          settings = {
+            basedpyright = {
+              analysis = {
+                diagnosticMode = "openFilesOnly",
+                diagnosticSeverityOverrides = {
+                  reportAny = "none",
+                  reportExplicitAny = "none",
+                  reportUnusedCallResult = "none",
+                  reportUnannotatedClassAttribute = "none",
+                },
+              },
+            },
+          },
+        },
       }
 
       -- Ensure the servers and tools above are installed
