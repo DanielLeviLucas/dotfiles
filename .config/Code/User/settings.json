@@ -1,5 +1,7 @@
 {
   "workbench.iconTheme": "material-icon-theme",
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
   "editor.fontSize": 18,
   "editor.formatOnSave": false,
   "workbench.colorTheme": "Dracula Refined",
@@ -60,7 +62,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
-  "python.languageServer": "Pylance",
   "[django-html]": {
     "editor.formatOnSave": false
   },
@@ -73,7 +74,15 @@
     "*.html.erb": "erb"
   },
   "[python]": {
-    "editor.defaultFormatter": "ms-python.python"
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "python.languageServer": "None",
+  "basedpyright.analysis.diagnosticMode": "openFilesOnly",
+  "basedpyright.analysis.diagnosticSeverityOverrides": {
+    "reportUnusedCallResult": "none",
+    "reportAny": "none",
+    "reportExplicitAny": "none",
+    "reportUnannotatedClassAttribute": "none"
   },
   "html.format.enable": false,
   "html.format.templating": true,
