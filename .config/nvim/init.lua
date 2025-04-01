@@ -318,7 +318,7 @@ local plugins = {
       {
         "<leader>cf",
         function()
-          require("conform").format({ async = true, lsp_fallback = true })
+          require("conform").format({ async = true, lsp_fallback = false })
         end,
         mode = "",
         desc = "Format buffer using conform",
@@ -332,14 +332,16 @@ local plugins = {
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        svelte = { "prettierd", "prettier" },
-        javascript = { "prettierd", "prettier" },
-        typescript = { "prettierd", "prettier" },
-        javascriptreact = { "prettierd", "prettier" },
-        typescriptreact = { "prettierd", "prettier" },
-        json = { "prettierd", "prettier" },
-        css = { "prettierd", "prettier" },
-        scss = { "prettierd", "prettier" },
+        svelte = { "prettier" },
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        javascriptreact = { "prettier" },
+        typescriptreact = { "prettier" },
+        html = { "prettier" },
+        json = { "prettier" },
+        jsonc = { "prettier" },
+        css = { "prettier" },
+        scss = { "prettier" },
         proto = { "buf" },
         sh = { "shfmt" },
         yaml = { "yamlfmt" },
