@@ -11,7 +11,10 @@
 	enabled = true
 
 [core]
-	autocrlf = false
+    autocrlf = false
+
+[init]
+    defaultBranch = main
 
 [branch]
 	sort = -committerdate
@@ -20,13 +23,22 @@
 	prune = true
 
 [alias]
-    push = push --force-with-lease
     brancha = branch --column -a
+    lol =  log --oneline --decorate
+    graph = log --oneline --graph --decorate
+    pushf = push --force-with-lease
     watch = maintenance start
     unwatch = maintenance stop
 
 [credential]
-	helper = store
+    helper = store
+
+[grep]
+    lineNumber = true
+
+[color.decorate]
+    branch = 45
+    HEAD = "#00FFFF" bold
 
 [user]
 	email = daniellevilucas@gmail.com
