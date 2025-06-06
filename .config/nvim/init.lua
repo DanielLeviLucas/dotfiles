@@ -245,6 +245,11 @@ local plugins = {
   -- Plenary - lua functions that many plugins use {{{
   "nvim-lua/plenary.nvim",
   -- }}}
+  -- Guess Indent - Automatic indentation style detection for Neovim  {{{
+  {
+    "NMAC427/guess-indent.nvim", -- Detect tabstop and shiftwidth automatically
+  },
+  --- }}}
   -- Neoscroll - Smooth scrolling plugin {{{
   {
     "karb94/neoscroll.nvim",
@@ -1376,7 +1381,6 @@ local plugins = {
   -- }}}
 }
 -- }}}
-
 -- lazy - plugin manager{{{
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
