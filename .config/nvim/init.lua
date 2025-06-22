@@ -1074,6 +1074,7 @@ local plugins = {
 
       cmp.setup({
         completion = {
+          autocomplete = false,
           completeopt = "menu,menuone,preview,noselect",
         },
 
