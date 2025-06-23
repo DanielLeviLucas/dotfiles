@@ -2,13 +2,11 @@
 import os
 import socket
 import subprocess
-import psutil
-from datetime import datetime
-from libqtile import qtile
-from libqtile.config import Click, Drag, Key, Match, Screen, Group, KeyChord
-from libqtile import layout, bar, hook
-from libqtile.lazy import lazy
 
+import psutil
+from libqtile import bar, hook, layout, qtile
+from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen
+from libqtile.lazy import lazy
 from qtile_extras import widget
 from qtile_extras.widget.decorations import BorderDecoration
 
@@ -470,26 +468,13 @@ def init_widgets_screen2():
 
 
 def init_screens():
-    return [
-        Screen(
-            top=bar.Bar(
-                widgets=init_widgets_screen1(),
-                opacity=1.0,
-                size=28
-            )
-        ),
-        Screen(
-            top=bar.Bar(
-                widgets=init_widgets_screen2(),
-                opacity=1.0,
-                size=28)
-        ),
-    ]
+
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen2(), margin=[8, 12, 0, 12], size=30)),
+            Screen(top=bar.Bar(widgets=init_widgets_screen1(), margin=[8, 12, 0, 12], size=30)),]
 
 
 if __name__ in ["config", "__main__"]:
     screens = init_screens()
-    widgets_list = init_widgets_list()
     widgets_screen1 = init_widgets_screen1()
     widgets_screen2 = init_widgets_screen2()
 
