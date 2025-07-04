@@ -249,6 +249,9 @@ local plugins = {
   -- Guess Indent - Automatic indentation style detection for Neovim  {{{
   {
     "NMAC427/guess-indent.nvim", -- Detect tabstop and shiftwidth automatically
+    config = function()
+      require("guess-indent").setup({})
+    end,
   },
   --- }}}
   -- Neoscroll - Smooth scrolling plugin {{{
