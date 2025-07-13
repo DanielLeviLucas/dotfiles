@@ -140,6 +140,7 @@ opt.pumblend = 0
 -- opt.wildmode = "longest:full"
 opt.wildoptions = "pum"
 
+opt.autochdir = false
 opt.showmode = false
 opt.showcmd = true
 opt.cmdheight = 1 -- Height of the command bar
