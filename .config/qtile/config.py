@@ -13,7 +13,7 @@ from qtile_extras.widget.decorations import BorderDecoration
 HOME_DIR = os.path.expanduser('~')
 
 mod = "mod4"              # Sets mod key to SUPER/WINDOWS
-myTerm = "ghostty"        # My terminal of choice
+myTerm = "kitty"          # My terminal of choice
 
 
 keys = [
