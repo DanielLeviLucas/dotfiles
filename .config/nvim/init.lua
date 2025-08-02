@@ -1041,6 +1041,14 @@ local plugins = {
     end,
   },
   -- }}}
+  -- Markdown Previewer - markdown preview plugin for (neo)vim {{{
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = ":call mkdp#util#install()",
+  },
+  -- }}}
   -- Nvim-cmp - A completion plugin {{{
   {
     "hrsh7th/nvim-cmp",
