@@ -161,5 +161,7 @@ source $ZDOTDIR/function.zsh
 ## UV auto completion
 eval "$(uv generate-shell-completion zsh)"
 
+eval "$(zoxide init zsh)"
+
 ### SETTING THE STARSHIP PROMPT ###
 eval "$(starship init zsh)"
