@@ -3,9 +3,9 @@ ZDOTDIR=$HOME/.config/zsh
 ZSHAREDIR=$HOME/.local/share/zsh
 
 # Zsh related
-HISTFILE=$ZDOTDIR/.history
-HISTSIZE=10000
-SAVEHIST=10000
+HISTFILE=$XDG_CACHE_HOME/zsh/.zsh_history
+HISTSIZE=1000
+SAVEHIST=1000
 KEYTIMEOUT=1                            # makes the switch between modes quicker
 HISTORY_SUBSTRING_SEARCH_PREFIXED=1     # enables prefixed search for zsh-history-substring-search
 

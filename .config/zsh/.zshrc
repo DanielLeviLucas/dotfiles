@@ -21,9 +21,9 @@ unsetopt EXTENDED_HISTORY
 # }}}
 
 # Autoload {{{
-autoload -U compinit; compinit
+autoload -U compinit;
 zmodload zsh/complist
-compinit
+compinit -d "$XDG_CACHE_HOME/zsh/.zcompdump"
 _comp_options+=(globdots)
 autoload -Uz edit-command-line; zle -N edit-command-line
 # }}}
