@@ -468,9 +468,14 @@ def init_widgets_screen2():
 
 
 def init_screens():
-
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen2(), margin=[8, 12, 0, 12], size=30)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen1(), margin=[8, 12, 0, 12], size=30)),]
+    return [
+        Screen(
+            top=bar.Bar(widgets=init_widgets_screen1(), margin=[8, 12, 0, 12], size=30)
+        ),
+        Screen(
+            top=bar.Bar(widgets=init_widgets_screen2(), margin=[8, 12, 0, 12], size=30)
+        ),
+    ]
 
 
 if __name__ in ["config", "__main__"]:
