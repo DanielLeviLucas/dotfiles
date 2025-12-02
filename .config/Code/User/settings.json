@@ -182,5 +182,9 @@
       "before": ["leader", "g", "c"],
       "commands": ["editor.action.commentLine"]
     }
-  ]
+  ],
+  "chat.commandCenter.enabled": false,
+  "editor.inlayHints.enabled": "offUnlessPressed",
+  "jupyter.askForKernelRestart": false,
+  "workbench.secondarySideBar.defaultVisibility": "hidden"
 }
