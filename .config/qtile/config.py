@@ -431,6 +431,7 @@ def init_widgets_list():
         ),
         widget.Spacer(length = 8),
         widget.KeyboardLayout(
+            configured_keyboards=["us dvorak"],
             foreground=colors[8],
             background=colors[0],
             mouse_callbacks={
