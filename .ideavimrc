@@ -1,0 +1,55 @@
+set easymotion
+
+let mapleader = " "
+
+set visualbell
+set noerrorbells
+set relativenumber
+set number
+
+nnoremap <C-j> :m +1<CR>
+nnoremap <C-k> :m -2<CR>
+inoremap <C-j> <Esc>:m +1<CR>gi
+inoremap <C-k> <Esc>:m -2<CR>gi
+
+" easy system clipboard copy/paste
+noremap <space>y "*y
+noremap <space>Y "*Y
+noremap <space>p "*p
+noremap <space>P "*P
+
+" Scrolling
+nmap <leader>d <C-d>
+nmap <leader>u <C-u>
+vmap <leader>d <C-d>
+vmap <leader>u <C-u>
+
+" clear the search buffer when hitting return
+nnoremap <space><cr> :nohlsearch<cr>
+
+" actions
+nmap <leader>h <action>(PreviousTab)
+nmap <leader>l <action>(NextTab)
+nmap <leader>i <action>(Generate)
+nmap <leader>m <action>(Git.Menu)
+nmap <leader>s <action>(QuickChangeScheme)
+nmap <leader>/ <action>(ShowErrorDescription)
+nmap <leader>e <action>(GottoNextError)
+nmap <leader>x <action>(CloseEditor)
+nmap <leader>w <action>(HideAllWindows)
+nmap <C-f> :action GotoFile<CR>
+nnoremap <Leader>ca :action ShowIntentionActions<CR>
+nnoremap <Leader>vr :action RecentFiles<CR>
+nnoremap <leader><leader> <C-Tab>
+
+nmap <leader>rt <action>(Run)
+nmap <leader>u <action>(FindUsages)
+nmap <leader>gt <action>(GotoTest)
+nmap <leader>rr <action>(RenameElement)
+
+" built in search looks better
+nnoremap / :action Find<cr>
+
+" but preserve ideavim search
+nnoremap g/ /
+
