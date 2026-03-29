@@ -1334,7 +1334,6 @@ local plugins = {
       "nvim-treesitter/nvim-treesitter-textobjects",
     },
     build = ":TSUpdate",
-    main = "nvim-treesitter.configs", -- Sets main module to use for opts
     opts = {
       ensure_installed = {
         "bash",
