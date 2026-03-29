@@ -91,14 +91,6 @@ if [ -z "$XDG_CACHE_HOME" ] ; then
 fi
 # }}}
 
-# PATH Programming language & pkg manager {{{
-export GOPATH="$HOME/go/packages"
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-
-export ZIG_HOME="$HOME/.zig"
-export PATH="$PATH:$ZIG_HOME/v0.14.0-dev"
-#: }}}
-
 ### CHANGE TITLE OF TERMINALS {{{
 case ${TERM} in
   xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|alacritty|st|konsole*)
