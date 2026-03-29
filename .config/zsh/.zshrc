@@ -53,6 +53,30 @@ fi
 if [ -d "/var/lib/flatpak/exports/bin/" ] ;
   then PATH="/var/lib/flatpak/exports/bin/:$PATH"
 fi
+
+add_to_path() {
+    case ":$PATH:" in
+        *":$1:"*) ;;
+        *) PATH="$1:$PATH" ;;
+    esac
+}
+
+PROGRAMS_DIR="$HOME/Programs"
+
+for dir in "$PROGRAMS_DIR"/*; do
+    [ -d "$dir" ] || continue
+
+    if [ -d "$dir/bin" ]; then
+        add_to_path "$dir/bin"
+    else
+        if find "$dir" -maxdepth 1 -type f -executable | grep -q .; then
+            add_to_path "$dir"
+        fi
+    fi
+done
+
+export PATH
+
 # }}}
 
 ### SETTING OTHER ENVIRONMENT VARIABLES {{{
