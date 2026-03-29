@@ -36,3 +36,5 @@
 !.config/mpv/**
 .config/mpv/watch_later
 
+.local/bin/mise
+
