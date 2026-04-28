@@ -1,0 +1,27 @@
+#!/bin/bash
+
+status=$(playerctl --player=spotify status)
+
+if [ "$status" == "" ]; then
+    dunstify "Notification" "No Players found" -I /usr/share/icons/Adwaita/scalable/places/folder-music.svg -t 2000
+    exit 0
+fi
+
+if [ "$status" == "Playing" ]; then
+    status="Now $status"
+fi
+
+song_name=$(playerctl --player=spotify metadata title)
+artist_name=$(playerctl --player=spotify metadata artist)
+
+art_url=$(playerctl --player=spotify metadata mpris:artUrl)
+song_uid=$(basename "$art_url")
+cover_art_cache_path="$HOME/.cache/spotify/Data/cover_art_cache/$song_uid - $song_name - $artist_name"
+
+if [ -e "$cover_art_cache_path" ]; then
+    dunstify "$status" "$artist_name - $song_name" -I "$cover_art_cache_path" -t 2000
+else
+    touch "$cover_art_cache_path"
+    curl "$art_url" --output "$cover_art_cache_path"
+    dunstify "$status" "$artist_name - $song_name" -I "$cover_art_cache_path" -t 2000
+fi
