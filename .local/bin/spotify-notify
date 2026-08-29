@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+cover_art_cache_dir="$HOME/.cache/spotify/Data/cover_art_cache"
+
+normalize() {
+    local s
+    s="$1"
+    printf '%s' "${s//\//-}"
+}
+
+while IFS='*' read -r trackid title artist art_url; do
+    [[ -z "$title" ]] && continue
+
+    song_name=$(normalize "$title")
+    artist_name=$(normalize "$artist")
+    song_uid=$(basename "$art_url")
+
+    cover_art_cache_path="$cover_art_cache_dir/$song_uid - $song_name - $artist_name"
+
+    if [[ -e "$cover_art_cache_path" ]]; then
+        dunstify "Now Playing" "$artist_name - $song_name" -I "$cover_art_cache_path" -t 3500
+    else
+        touch "$cover_art_cache_path"
+        curl -s "$art_url" --output "$cover_art_cache_path"
+        dunstify "Now Playing" "$artist_name - $song_name" -I "$cover_art_cache_path" -t 3500
+    fi
+done < <(
+    playerctl -p spotify metadata \
+        --format '{{mpris:trackid}}*{{title}}*{{artist}}*{{mpris:artUrl}}' \
+        --follow
+)
