@@ -8,8 +8,14 @@ if [ "$status" == "" ]; then
     exit 0
 fi
 
-song_name=$(playerctl --player=spotify metadata title)
-artist_name=$(playerctl --player=spotify metadata artist)
+normalize() {
+    local s
+    s="$(playerctl --player=spotify metadata "$1")"
+    printf '%s' "${s//\//-}"
+}
+
+song_name=$(normalize title)
+artist_name=$(normalize artist)
 
 art_url=$(playerctl --player=spotify metadata mpris:artUrl)
 song_uid=$(basename "$art_url")
