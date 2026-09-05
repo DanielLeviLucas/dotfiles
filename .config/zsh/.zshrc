@@ -54,6 +54,10 @@ if [ -d "/var/lib/flatpak/exports/bin/" ] ;
   then PATH="/var/lib/flatpak/exports/bin/:$PATH"
 fi
 
+if [ -d "/opt/cuda/bin/" ] ;
+  then PATH="/opt/cuda/bin/:$PATH"
+fi
+
 add_to_path() {
     case ":$PATH:" in
         *":$1:"*) ;;
