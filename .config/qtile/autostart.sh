@@ -7,4 +7,5 @@ copyq &
 setxkbmap us dvorak &
 xset -dpms &
 xset s off &
+kwalletd6 &
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources &
