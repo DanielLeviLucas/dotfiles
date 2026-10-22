@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cover_art_cache_dir="$HOME/.cache/spotify/Data/cover_art_cache"
+readonly COVER_ART_CACHE_DIR="$HOME/.cache/spotify/Data/cover_art_cache"
 
 normalize() {
     local s
@@ -8,14 +8,32 @@ normalize() {
     printf '%s' "${s//\//-}"
 }
 
+PLAYER=""
+
+detect_player() {
+    local players
+    players="$(playerctl -l 2>/dev/null || true)"
+
+    if grep -Fxq 'spotifast' <<<"$players"; then
+        PLAYER="spotifast"
+    elif grep -Fxq 'spotify' <<<"$players"; then
+        PLAYER="spotify"
+    fi
+
+}
+
+
 while IFS='*' read -r trackid title artist art_url; do
+    detect_player
+    echo "current player: "  "'" "$PLAYER" "'"
+
     [[ -z "$title" ]] && continue
 
     song_name=$(normalize "$title")
     artist_name=$(normalize "$artist")
     song_uid=$(basename "$art_url")
 
-    cover_art_cache_path="$cover_art_cache_dir/$song_uid - $song_name - $artist_name"
+    cover_art_cache_path="$COVER_ART_CACHE_DIR/$song_uid - $song_name - $artist_name"
 
     if [[ -e "$cover_art_cache_path" ]]; then
         dunstify "Now Playing" "$artist_name - $song_name" -I "$cover_art_cache_path" -t 3500
@@ -25,7 +43,7 @@ while IFS='*' read -r trackid title artist art_url; do
         dunstify "Now Playing" "$artist_name - $song_name" -I "$cover_art_cache_path" -t 3500
     fi
 done < <(
-    playerctl -p spotify metadata \
+    playerctl -p "$PLAYER" metadata \
         --format '{{mpris:trackid}}*{{title}}*{{artist}}*{{mpris:artUrl}}' \
         --follow
 )

@@ -1,0 +1,142 @@
+#!/usr/bin/env bash
+#
+# spotify-ctl - Control Spotify (or Spotifast) from the command line
+#
+# Requires: playerctl, dunstify (optional, for notifications), curl
+
+set -euo pipefail
+
+readonly PROGRAM="${0##*/}"
+readonly VERSION="1.0.0"
+readonly CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/spotify/Data/cover_art_cache"
+readonly FALLBACK_ICON="/usr/share/icons/Adwaita/scalable/places/folder-music.svg"
+readonly NOTIFY_TIMEOUT=2000
+
+PLAYER=""
+NOTIFY=1
+
+usage() {
+    cat <<EOF
+Usage: $PROGRAM [OPTIONS] COMMAND
+
+Control Spotify (or Spotifast) via playerctl.
+
+Commands:
+  play-pause, toggle    Toggle playback and show a notification
+  next                  Skip to the next track
+  prev, previous        Go back to the previous track
+
+Options:
+  -n, --no-notify       Do not send desktop notifications
+  -h, --help            Show this help message and exit
+  -v, --version         Show version and exit
+EOF
+}
+
+die() {
+    printf '%s: %s\n' "$PROGRAM" "$*" >&2
+    exit 1
+}
+
+notify() {
+    # notify TITLE BODY [ICON]
+    (( NOTIFY )) || return 0
+    command -v dunstify >/dev/null 2>&1 || return 0
+    dunstify "$1" "$2" -I "${3:-$FALLBACK_ICON}" -t "$NOTIFY_TIMEOUT"
+}
+
+check_dependencies() {
+    command -v playerctl >/dev/null 2>&1 || die "playerctl is not installed"
+}
+
+detect_player() {
+    local players
+    players="$(playerctl -l 2>/dev/null || true)"
+
+    if grep -Fxq 'spotifast' <<<"$players"; then
+        PLAYER="spotifast"
+    elif grep -Fxq 'spotify' <<<"$players"; then
+        PLAYER="spotify"
+    else
+        notify "Spotify" "No players found"
+        die "no Spotify player found"
+    fi
+}
+
+pctl() {
+    playerctl --player="$PLAYER" "$@"
+}
+
+# Fetch metadata and replace "/" so it is safe to use in file names
+metadata() {
+    local value
+    value="$(pctl metadata "$1" 2>/dev/null || true)"
+    printf '%s' "${value//\//-}"
+}
+
+get_cover_art() {
+    # get_cover_art ART_URL SONG ARTIST -> prints cached file path, or nothing
+    local art_url="$1" song="$2" artist="$3"
+    [[ -n "$art_url" ]] || return 0
+
+    mkdir -p "$CACHE_DIR"
+    local cache_file="$CACHE_DIR/$(basename "$art_url") - $song - $artist"
+
+    if [[ ! -s "$cache_file" ]]; then
+        if ! curl -fsSL "$art_url" --output "$cache_file"; then
+            rm -f "$cache_file"
+            return 0
+        fi
+    fi
+    printf '%s' "$cache_file"
+}
+
+cmd_play_pause() {
+    pctl play-pause
+    sleep 0.1
+
+    local status song artist art_url cover
+    status="$(pctl status 2>/dev/null || true)"
+    [[ -n "$status" ]] || { notify "Spotify" "No players found"; return 0; }
+
+    song="$(metadata title)"
+    artist="$(metadata artist)"
+    art_url="$(pctl metadata mpris:artUrl 2>/dev/null || true)"
+    cover="$(get_cover_art "$art_url" "$song" "$artist")"
+
+    notify "$status" "$artist - $song" "${cover:-$FALLBACK_ICON}"
+}
+
+cmd_next() { pctl next; }
+cmd_prev() { pctl previous; }
+
+main() {
+    local command=""
+
+    while (( $# )); do
+        case "$1" in
+            -h|--help)      usage; exit 0 ;;
+            -v|--version)   printf '%s %s\n' "$PROGRAM" "$VERSION"; exit 0 ;;
+            -n|--no-notify) NOTIFY=0 ;;
+            --)             shift; break ;;
+            -*)             usage >&2; die "unknown option: $1" ;;
+            *)              [[ -z "$command" ]] || die "unexpected argument: $1"
+                            command="$1" ;;
+        esac
+        shift
+    done
+
+    [[ -n "$command" ]] || { usage >&2; exit 2; }
+
+    check_dependencies
+    detect_player
+
+    case "$command" in
+        play-pause|toggle) cmd_play_pause ;;
+        next)              cmd_next ;;
+        prev|previous)     cmd_prev ;;
+        *)                 usage >&2; die "unknown command: $command" ;;
+    esac
+}
+
+main "$@"

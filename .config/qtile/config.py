@@ -143,15 +143,15 @@ keys = [
         desc='Chage keyboard layout to Dvorak'
         ),
     KeyChord([mod], 'p', [
-            Key([], 'p', lazy.spawn("player-play-pause"), desc='spotify player play/pause'),
-            Key([], 'n', lazy.spawn("playerctl --player=spotify next "), desc='spotify player next track'),
-            Key([], 'b', lazy.spawn("playerctl --player=spotify previous "), desc='spotify player previous track'),
+            Key([], 'p', lazy.spawn("spotictl toggle"), desc='spotify player play/pause'),
+            Key([], 'n', lazy.spawn("spotictl next"), desc='spotify player next track'),
+            Key([], 'b', lazy.spawn("spotictl prev"), desc='spotify player previous track'),
            ],
            mode=True,
            name='Spotify player controls'
     ),
     Key([mod, "shift"], "p",
-        lazy.spawn("player-play-pause"),
+        lazy.spawn("spotictl toggle"),
         desc='Toggle play/pause in spotify'
         ),
     Key([mod, "shift"], "y",
