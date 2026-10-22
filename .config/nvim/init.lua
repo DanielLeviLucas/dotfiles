@@ -125,7 +125,6 @@ opt.swapfile = false
 opt.undofile = true
 opt.undodir = vim.fn.expand("$HOME/.cache/nvim/undo")
 opt.viewdir = vim.fn.expand("$HOME/.cache/nvim/view")
-vim.lsp.set_log_level("off")
 
 opt.signcolumn = "yes"
 opt.isfname:append("@-@")
